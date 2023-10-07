@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "28266470976",
+    "project_id": "medminder1908",
+    "storage_bucket": "medminder1908.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28266470976:android:241ad121edc9c5c2d249a5",
+        "android_client_info": {
+          "package_name": "tech.medminder.medminder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "28266470976-d87ntmvgo3edao142lev3kk2or2h02ma.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "tech.medminder.medminder",
+            "certificate_hash": "00c7bf3bb0b9f58c7c008aa232134b03a6cc0a6d"
+          }
+        },
+        {
+          "client_id": "28266470976-vp3tj1cdin4t5916nmt1c8l1997eoq3r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaKJ8Kgv3aApcx4znDmCmyNvm6tvQiHNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "28266470976-vp3tj1cdin4t5916nmt1c8l1997eoq3r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "28266470976-218e0pcio6p7o07dldd1ss5gjd9tvdbf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "tech.medminder.medminder"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
