@@ -30,8 +30,8 @@ class EmergencyContactService {
     }
   }
 
-  Future<AppModel?> getEmergencyContacts(String uid) async {
-    assert(uid.isNotEmpty);
+  Future<AppModel?> getEmergencyContacts() async {
+    final uid = GetIt.I<SharedPreferences>().getString(Constants.uid);
 
     final userCollection = FirebaseFirestore.instance
         .collection(GetIt.I<SharedPreferences>().getString(Constants.uid)!);

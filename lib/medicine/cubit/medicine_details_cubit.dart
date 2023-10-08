@@ -13,7 +13,7 @@ class MedicineDetailsCubit extends Cubit<MedicineDetailsState> {
 
   Future<void> getAppModel() async {
     final uid = GetIt.I<SharedPreferences>().getString(Constants.uid);
-    final appModel = await EmergencyContactService().getEmergencyContacts(uid!);
+    final appModel = await EmergencyContactService().getEmergencyContacts();
 
     final days = [];
 
