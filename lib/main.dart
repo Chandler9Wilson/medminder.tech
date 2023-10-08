@@ -14,6 +14,8 @@ import 'package:medminder/auth/view/login_view.dart';
 import 'package:medminder/contact/cubit/emergency_contact_cubit.dart';
 import 'package:medminder/contact/view/emergency_contact_view.dart';
 import 'package:medminder/medicine/cubit/medicine_cubit.dart';
+import 'package:medminder/medicine/cubit/medicine_details_cubit.dart';
+import 'package:medminder/medicine/view/medicine_details_view.dart';
 import 'package:medminder/medicine/view/medicine_form.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,6 +42,13 @@ final goRouter = GoRouter(
       builder: (context, state) => BlocProvider(
         create: (context) => MedicineCubit(),
         child: const MedicineFormView(),
+      ),
+    ),
+    GoRoute(
+      path: '/view-medicine',
+      builder: (context, state) => BlocProvider(
+        create: (context) => MedicineDetailsCubit(),
+        child: const MedicineDetailsView(),
       ),
     )
   ],

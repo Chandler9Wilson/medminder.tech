@@ -57,7 +57,7 @@ class EmergencyContactService {
           AppModel(
             uid,
             [],
-            Medicine(name, doseDescription, dayOfWeeks),
+            [Medicine(name, doseDescription, dayOfWeeks)],
           ).toJson(),
         );
       });
@@ -65,7 +65,8 @@ class EmergencyContactService {
       FirebaseFirestore.instance.runTransaction((transaction) async {
         final documentId = userDocument.docs.first;
         final appModel = AppModel.fromJson(documentId.data());
-        appModel.medicine = Medicine(name, doseDescription, dayOfWeeks);
+        appModel.medicine = appModel.medicine
+          ..add(Medicine(name, doseDescription, dayOfWeeks).toJson());
         await userCollection.doc(documentId.id).update(appModel.toJson());
       });
     }

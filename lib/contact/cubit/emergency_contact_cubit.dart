@@ -19,7 +19,7 @@ class EmergencyContactCubit extends Cubit<EmergencyContactState> {
     final uid = GetIt.I<SharedPreferences>().getString(Constants.uid);
 
     await EmergencyContactService()
-        .addEmergencyContact(uid!, AppModel(uid, [emergencyContact], null));
+        .addEmergencyContact(uid!, AppModel(uid, [emergencyContact], []));
   }
 
   void emitLoadedState() {

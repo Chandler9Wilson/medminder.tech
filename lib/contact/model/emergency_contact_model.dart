@@ -3,24 +3,17 @@ import 'package:medminder/constants.dart';
 class AppModel {
   final String uid;
   final List contacts;
-  Medicine? medicine;
+  List medicine;
 
   AppModel(this.uid, this.contacts, this.medicine);
 
-  Map<String, dynamic> toJson() => {
-        Constants.uid: uid,
-        contactsKey: contacts,
-        medicineKey: medicine != null ? medicine!.toJson() : null
-      };
+  Map<String, dynamic> toJson() =>
+      {Constants.uid: uid, contactsKey: contacts, medicineKey: medicine};
 
   static AppModel fromJson(Map<String, dynamic> json) => AppModel(
         json[Constants.uid],
         json[contactsKey],
-        json[medicineKey] == null
-            ? null
-            : Medicine.fromJson(
-                json[medicineKey],
-              ),
+        json[medicineKey] == null ? null : json['medicine'],
       );
 }
 
