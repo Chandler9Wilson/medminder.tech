@@ -6,6 +6,10 @@ class MedicineDetailsInitial extends MedicineDetailsState {}
 
 class MedicineDetailsLoading extends MedicineDetailsState {}
 
-class MedicineDetailsLoaded extends MedicineDetailsState {}
+class MedicineDetailsLoaded extends MedicineDetailsState {
+  final AppModel? appModel;
+
+  MedicineDetailsLoaded(this.appModel);
+}
 
 class MedicineDetailsError extends MedicineDetailsState {}

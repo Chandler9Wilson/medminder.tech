@@ -17,10 +17,9 @@ class EmergencyContactService {
     if (userDocument.docs.isNotEmpty) {
       FirebaseFirestore.instance.runTransaction((transaction) async {
         final documentId = userDocument.docs.first;
-
-        await userCollection
-            .doc(documentId.id)
-            .update(emergencyContactModel.toJson());
+        final appModel = AppModel.fromJson(documentId.data());
+        appModel.contacts.addAll(emergencyContactModel.contacts);
+        await userCollection.doc(documentId.id).update(appModel.toJson());
       });
     } else {
       FirebaseFirestore.instance.runTransaction((transaction) async {
@@ -29,7 +28,7 @@ class EmergencyContactService {
     }
   }
 
-  Future<List> getEmergencyContacts(String uid) async {
+  Future<AppModel?> getEmergencyContacts(String uid) async {
     assert(uid.isNotEmpty);
 
     final userCollection = FirebaseFirestore.instance
@@ -38,9 +37,9 @@ class EmergencyContactService {
     final userDocument = await userCollection.get();
 
     if (userDocument.docs.isEmpty) {
-      return [];
+      return null;
     } else {
-      return AppModel.fromJson(userDocument.docs.first.data()).contacts;
+      return AppModel.fromJson(userDocument.docs.first.data());
     }
   }
 
@@ -65,8 +64,8 @@ class EmergencyContactService {
       FirebaseFirestore.instance.runTransaction((transaction) async {
         final documentId = userDocument.docs.first;
         final appModel = AppModel.fromJson(documentId.data());
-        appModel.medicine = appModel.medicine
-          ..add(Medicine(name, doseDescription, dayOfWeeks).toJson());
+        appModel.medicine
+            .add(Medicine(name, doseDescription, dayOfWeeks).toJson());
         await userCollection.doc(documentId.id).update(appModel.toJson());
       });
     }
