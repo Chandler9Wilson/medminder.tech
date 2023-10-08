@@ -26,7 +26,7 @@ class _EmergencyContactViewState extends State<EmergencyContactView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Contacts'),
+        title: const Text('Emergency Contact'),
       ),
       body: BlocBuilder<EmergencyContactCubit, EmergencyContactState>(
         builder: (context, state) {
@@ -40,7 +40,7 @@ class _EmergencyContactViewState extends State<EmergencyContactView> {
                 children: [
                   const SizedBox(
                     child: Text(
-                      'Add Emergency Contact',
+                      'Add Family Member or Caretaker',
                       style: TextStyle(
                           color: AppColor.appPrimaryColor,
                           fontSize: 20,
@@ -55,22 +55,36 @@ class _EmergencyContactViewState extends State<EmergencyContactView> {
                     child: Column(
                       children: [
                         TextFormField(
-                          controller: _textController,
-                          style:
-                              const TextStyle(color: AppColor.appPrimaryColor),
-                          keyboardType: TextInputType.number,
                           decoration: const InputDecoration(
+                            icon: Icon(Icons.person),
+                            hintText: "Who's number is this?",
+                            labelText: 'Contact Name *',
                             fillColor: AppColor.appPrimaryColor,
                             focusedBorder: OutlineInputBorder(
                               borderSide:
-                                  BorderSide(color: AppColor.appPrimaryColor),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: AppColor.appPrimaryColor,
+                                  BorderSide(color: AppColor.appPrimaryColor)
                               ),
-                            ),
                           ),
+                          controller: _textController,
+                          style:
+                              const TextStyle(color: AppColor.appPrimaryColor),
+                          keyboardType: TextInputType.name,
+                        ),
+                        TextFormField(
+                          decoration: const InputDecoration(
+                            icon: Icon(Icons.phone),
+                            hintText: "(555) 555-1234",
+                            labelText: 'Contact Phone Number *',
+                            fillColor: AppColor.appPrimaryColor,
+                            focusedBorder: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: AppColor.appPrimaryColor)
+                              ),
+                          ),
+                          controller: _textController,
+                          style:
+                              const TextStyle(color: AppColor.appPrimaryColor),
+                          keyboardType: TextInputType.phone,
                         ),
                         space(),
                         space(),
