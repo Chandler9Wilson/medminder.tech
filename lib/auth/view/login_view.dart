@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get_it/get_it.dart';
 import 'package:medminder/app_theme.dart';
 import 'package:medminder/auth/cubit/login_cubit.dart';
 import 'package:medminder/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginInView extends StatefulWidget {
   const LoginInView({super.key});
@@ -64,7 +66,12 @@ class _LoginInViewState extends State<LoginInView> {
             context.read<LoginCubit>().tryLogin();
           }
           if (state is LoginSuccess) {
-            goRouter.go('/add-primary-contact');
+            if (GetIt.I<SharedPreferences>()
+                .containsKey('emergencyContactAvailable')) {
+              goRouter.go('/view-medicine');
+            } else {
+              goRouter.go('/add-primary-contact');
+            }
           }
         },
         builder: (context, state) {

@@ -7,9 +7,21 @@ class MedicineDetailsInitial extends MedicineDetailsState {}
 class MedicineDetailsLoading extends MedicineDetailsState {}
 
 class MedicineDetailsLoaded extends MedicineDetailsState {
-  final AppModel? appModel;
+  final List<MedicineViewDetailModel>? viewDetailModel;
 
-  MedicineDetailsLoaded(this.appModel);
+  MedicineDetailsLoaded(this.viewDetailModel);
 }
 
+class MedicineDetailsEmpty extends MedicineDetailsState {}
+
 class MedicineDetailsError extends MedicineDetailsState {}
+
+class MedicineViewDetailModel {
+  final String dayName;
+  final List<String> medicineNames;
+  final List<String> desc;
+  final List<bool> checkBoxValue;
+
+  MedicineViewDetailModel(
+      this.dayName, this.medicineNames, this.desc, this.checkBoxValue);
+}

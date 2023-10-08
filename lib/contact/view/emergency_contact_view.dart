@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:medminder/app_theme.dart';
 import 'package:medminder/contact/cubit/emergency_contact_cubit.dart';
@@ -98,7 +96,7 @@ class _EmergencyContactViewState extends State<EmergencyContactView> {
                                   .read<EmergencyContactCubit>()
                                   .addEmergencyContact(_phoneController.text);
 
-                              goRouter.push('/create-medicine');
+                              await goRouter.push('/create-medicine');
                             },
                             child: const Text(
                               'Add',

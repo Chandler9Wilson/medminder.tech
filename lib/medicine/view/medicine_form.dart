@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 import 'package:medminder/app_theme.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:medminder/main.dart';
 import 'package:medminder/medicine/cubit/medicine_cubit.dart';
+import 'package:medminder/medicine/cubit/medicine_details_cubit.dart';
 import 'package:medminder/medicine/widget/display_day_of_week.dart';
 
 class MedicineFormView extends StatefulWidget {
@@ -113,8 +115,8 @@ class _MedicineFormViewState extends State<MedicineFormView> {
                                 _description.text,
                                 _days,
                               );
-
-                          goRouter.push('/view-medicine');
+                          GetIt.I<MedicineDetailsCubit>().emitInitial();
+                          await goRouter.push('/view-medicine');
                         },
                         child: const SizedBox(
                           height: 30,

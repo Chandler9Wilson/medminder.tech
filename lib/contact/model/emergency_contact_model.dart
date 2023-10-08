@@ -3,7 +3,7 @@ import 'package:medminder/constants.dart';
 class AppModel {
   final String uid;
   final List contacts;
-  List medicine;
+  List? medicine;
 
   AppModel(this.uid, this.contacts, this.medicine);
 
@@ -20,7 +20,7 @@ class AppModel {
 class Medicine {
   final String name;
   final String description;
-  final List timeStamp;
+  final Map timeStamp;
 
   const Medicine(this.name, this.description, this.timeStamp);
 

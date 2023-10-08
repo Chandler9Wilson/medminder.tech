@@ -44,7 +44,7 @@ final goRouter = GoRouter(
     GoRoute(
       path: '/view-medicine',
       builder: (context, state) => BlocProvider(
-        create: (context) => MedicineDetailsCubit(),
+        create: (context) => GetIt.I<MedicineDetailsCubit>(),
         child: const MedicineDetailsView(),
       ),
     )
@@ -63,9 +63,11 @@ void main() async {
   final firebaseAuth = FirebaseAuth.instanceFor(app: firebaseApp);
   final authService = AuthService(firebaseAuth: firebaseAuth);
   final sp = await SharedPreferences.getInstance();
+  final medicineCubit = MedicineDetailsCubit();
 
   getIt.registerSingleton<AuthService>(authService);
   getIt.registerSingleton<SharedPreferences>(sp);
+  getIt.registerSingleton<MedicineDetailsCubit>(medicineCubit);
   runApp(
     MaterialApp.router(
       debugShowCheckedModeBanner: false,
