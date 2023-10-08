@@ -13,27 +13,37 @@ import 'package:medminder/auth/cubit/login_cubit.dart';
 import 'package:medminder/auth/view/login_view.dart';
 import 'package:medminder/contact/cubit/emergency_contact_cubit.dart';
 import 'package:medminder/contact/view/emergency_contact_view.dart';
+import 'package:medminder/medicine/cubit/medicine_cubit.dart';
+import 'package:medminder/medicine/view/medicine_form.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'firebase_options.dart';
 
-final goRouter = GoRouter(routes: [
-  GoRoute(
-    path: '/',
-    builder: (context, state) => BlocProvider(
-      create: (context) => LoginCubit()..isUserLoggedIn(),
-      child: const LoginInView(),
+final goRouter = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => BlocProvider(
+        create: (context) => LoginCubit()..isUserLoggedIn(),
+        child: const LoginInView(),
+      ),
     ),
-  ),
-  GoRoute(
-    path: '/add-primary-contact',
-    builder: (context, state) => BlocProvider(
-      create: (context) => EmergencyContactCubit(),
-      child: const EmergencyContactView(),
+    GoRoute(
+      path: '/add-primary-contact',
+      builder: (context, state) => BlocProvider(
+        create: (context) => EmergencyContactCubit(),
+        child: const EmergencyContactView(),
+      ),
     ),
-  ),
-  // GoRoute(path: '/create-medicine')
-]);
+    GoRoute(
+      path: '/create-medicine',
+      builder: (context, state) => BlocProvider(
+        create: (context) => MedicineCubit(),
+        child: const MedicineFormView(),
+      ),
+    )
+  ],
+);
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -41,10 +51,6 @@ void main() async {
   final firebaseApp = await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-
-  const jsonConfigPath = 'assets/config/atlasConfig.json';
-  dynamic realmConfigMap =
-      json.decode(await rootBundle.loadString(jsonConfigPath));
 
   final getIt = GetIt.instance;
 

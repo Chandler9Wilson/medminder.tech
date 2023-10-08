@@ -2,8 +2,8 @@ import 'package:medminder/constants.dart';
 
 class AppModel {
   final String uid;
-  final List<String> contacts;
-  final Medicine? medicine;
+  final List contacts;
+  Medicine? medicine;
 
   AppModel(this.uid, this.contacts, this.medicine);
 
@@ -27,7 +27,7 @@ class AppModel {
 class Medicine {
   final String name;
   final String description;
-  final List<int> timeStamp;
+  final List timeStamp;
 
   const Medicine(this.name, this.description, this.timeStamp);
 
