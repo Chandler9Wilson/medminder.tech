@@ -64,7 +64,7 @@ class _LoginInViewState extends State<LoginInView> {
             context.read<LoginCubit>().tryLogin();
           }
           if (state is LoginSuccess) {
-            goRouter.go('/home');
+            goRouter.go('/add-primary-contact');
           }
         },
         builder: (context, state) {

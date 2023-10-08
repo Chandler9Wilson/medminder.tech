@@ -1,0 +1,9 @@
+{
+    "appId": "devicesync-olhlh",
+    "appUrl": "https://realm.mongodb.com/groups/6521b99b18b43c16e38ff46a/apps/6521e0581dfdcad94d6d832e",
+    "baseUrl": "https://realm.mongodb.com",
+    "clientApiBaseUrl": "https://us-east-2.aws.realm.mongodb.com",
+    "dataApiBaseUrl": "https://us-east-2.aws.data.mongodb-api.com",
+    "dataExplorerLink": "https://cloud.mongodb.com/links/6521b99b18b43c16e38ff46a/explorer/MedMinder/database/collection/find",
+    "dataSourceName": "mongodb-atlas"
+}
